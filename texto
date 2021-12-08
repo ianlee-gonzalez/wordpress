@@ -1,0 +1,19 @@
+apt install vim unzip
+cd /var/www/html
+wget https://br.wordpress.org/
+unzip latest-pt_BR.zip
+mv wordpress/ wp/
+
+CREATE DATABASE wordpress1;
+CREATE USER 'wordpress1' IDENTIFIED BY 'wordpress1';
+GRANT USAGE ON *.* TO 'wordpress1';
+GRANT ALL PRIVILEGES ON wordpress1.* TO 'wordpress1';
+FLUSH PRIVILEGES;
+
+chmod -Rfv 775 wp/
+chown -Rfv www-data.www-data wp/
+
+cd wp/
+cp wp-config-sample.php wp-config.php
+vim wp-config.php
+
